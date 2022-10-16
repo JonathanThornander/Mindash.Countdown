@@ -12,6 +12,7 @@ namespace Mindash.Countdown.Web.Services
         public CountDownService(CountDownDBContext dbContext)
         {
             _dbContext = dbContext;
+            _dbContext.Database.EnsureCreated();
         }
 
         public async Task CreateNew(Data.DTOS.CountdownEvent dateModel)
