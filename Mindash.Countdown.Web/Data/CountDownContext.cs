@@ -7,7 +7,9 @@ namespace Mindash.Countdown.Web.Data
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=Data/database.db");
+            var dbPath = Path.Combine(Environment.CurrentDirectory, "CountdownData.db");
+            optionsBuilder.UseSqlite("Filename = " + dbPath);
+            base.OnConfiguring(optionsBuilder);
         }
 
         public DbSet<DTOS.CountdownEvent> CountdownEvents { get; set; }
